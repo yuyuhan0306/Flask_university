@@ -1,0 +1,24 @@
+mkdir Flask_university && cd Flask_university
+
+git init
+
+pyvenv-3.6 env
+pyvenv-3.6 --without-pip env
+source env/bin/activate
+curl https://bootstrap.pypa.io/get-pip.py | python
+deactivate
+
+# reactivate virtual env
+# 1: get into the env
+source venvdir/bin/activate
+# 2
+source .env
+
+touch app.py .gitignore README.md requirements.txt
+
+git remote add pro git@heroku.com:YOUR_APP_NAME.git
+git remote add stage git@heroku.com:YOUR_APP_NAME.git
+
+
+git push stage master
+git push pro master
