@@ -17,8 +17,23 @@ source .env
 
 touch app.py .gitignore README.md requirements.txt
 
-git remote add pro git@heroku.com:YOUR_APP_NAME.git
-git remote add stage git@heroku.com:YOUR_APP_NAME.git
+git remote add pro git@heroku.com:university-flask-pro.git     #YOUR_APP_NAME.git
+git remote add stage git@heroku.com:university-flask-stage.git #YOUR_APP_NAME.git
 
 git push stage master
 git push pro master
+
+touch config.py
+
+deactivate
+pip install autoenv==1.0.0
+touch .env
+
+source env/bin/activate
+export APP_SETTINGS="config.DevelopmentConfig"
+
+echo "source `which activate.sh`" >> ~/.bashrc
+source ~/.bashrc
+
+heroku run python app.py --app university-flask-stage
+heroku run python app.py --app university-flask-pro
