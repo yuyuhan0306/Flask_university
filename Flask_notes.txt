@@ -8,12 +8,14 @@ curl https://bootstrap.pypa.io/get-pip.py | python
 
 (env)$
 
-deactivate
 # reactivate virtual env
 # 1: get into the env
-source venvdir/bin/activate
+source env/bin/activate
 # 2
 source .env
+
+deactivate
+
 
 touch app.py .gitignore README.md requirements.txt
 
@@ -37,3 +39,27 @@ source ~/.bashrc
 
 heroku run python app.py --app university-flask-stage
 heroku run python app.py --app university-flask-pro
+
+sudo mkdir -p /etc/paths.d &&
+echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+
+psql
+
+CREATE DATABASE flask_uni
+
+pip install -U psycopg2
+pip install -U Flask-SQLAlchemy
+pip install -U Flask-Migrate
+
+export DATABASE_URL="postgresql://localhost/flask_uni"
+export APP_SETTINGS=config.DevelopmentConfig
+
+heroku config --app university-flask-stage
+heroku addons:create heroku-postgresql:hobby-dev --app university-flask-stage
+heroku config --app university-flask-stage
+
+heroku run python manage.py db upgrade --app university-flask-stage
+
+
+
+
