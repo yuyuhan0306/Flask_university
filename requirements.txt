@@ -182,7 +182,7 @@ redis==2.10.5
 regex==2017.9.23
 requests==2.18.4
 rope-py3k==0.9.4.post1
-rsa==3.4.2
+rsa==4.1
 s3transfer==0.1.11
 scikit-image==0.13.0
 scikit-learn==0.19.0
