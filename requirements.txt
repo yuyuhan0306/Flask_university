@@ -12,7 +12,7 @@ attrs==15.2.0
 autoenv==1.0.0
 Automat==0.0.0
 awscli==1.11.144
-Babel==2.4.0
+Babel==2.9.1
 backports.shutil-get-terminal-size==1.0.0
 bayesian-optimization==0.4.0
 beautifulsoup4==4.6.0
